@@ -16,6 +16,10 @@ let subzero: Subzero;
 const role = "anonymous";
 const touched = { current: false };
 
+export const config = {
+  runtime: "edge",
+};
+
 async function initSubzero(sql: NeonQueryFunction<false, false>) {
   const { query, parameters } = getIntrospectionQuery(
     dbType,
