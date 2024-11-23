@@ -5,6 +5,8 @@ import Subzero, {
   Method,
 } from "@subzerocloud/nodejs";
 import { neon, NeonQueryFunction } from "@neondatabase/serverless";
+import * as fs from "fs/promises";
+import { join } from "path";
 
 const urlPrefix = "/api";
 const publicSchema = "public";
@@ -12,6 +14,8 @@ const dbType = "postgresql";
 
 let subzero: Subzero;
 const role = "anonymous";
+const touched = { current: false };
+
 async function initSubzero(sql: NeonQueryFunction<false, false>) {
   const { query, parameters } = getIntrospectionQuery(
     dbType,
@@ -27,6 +31,12 @@ async function initSubzero(sql: NeonQueryFunction<false, false>) {
 }
 
 const handler = async (request: Request, method: Method) => {
+  if (!touched.current) {
+    const path = join(process.cwd(), "subzero", "subzero_wasm_bg.wasm");
+    console.log("Reading", path);
+    await fs.readdir(path);
+    touched.current = true;
+  }
   if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL is not set");
   }
