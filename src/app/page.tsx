@@ -3,9 +3,9 @@
 import { PostgrestClient } from "@supabase/postgrest-js";
 import { useState } from "react";
 import Image from "next/image";
-// Replace the REST_URL with your Zuplo gateway URL (or your Vercel URL directly
-// if you don't want protection)
-const REST_URL = "http://localhost:3000/api";
+// Replace the NEXT_PUBLIC_API_URL with your Zuplo gateway URL (or your Vercel URL directly
+// if you don't want built-in protection or caching)
+const REST_URL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
 
 interface PostgrestResponse {
   body: string;
@@ -16,10 +16,23 @@ interface PostgrestResponse {
   total_result_set: number;
 }
 
+const SELECT_CODE_SAMPLE = `const { data, error } = await postgrest
+      .from("playing_with_neon")
+      .select("*")
+      .order("id", { ascending: false });`;
+const INSERT_CODE_SAMPLE = `const { data, error } = await postgrest
+      .from("playing_with_neon")
+      .insert({ name: randomName, value: random });`;
+
 export default function Home() {
   const [neonData, setNeonData] = useState<string>();
   const [error, setError] = useState<string>();
+  const [codeSample, setCodeSample] = useState<string>();
   const handleFetchClick = async () => {
+    performFetch();
+    setCodeSample(SELECT_CODE_SAMPLE);
+  };
+  const performFetch = async () => {
     const postgrest = new PostgrestClient(REST_URL);
     const { data, error } = await postgrest
       .from("playing_with_neon")
@@ -44,11 +57,12 @@ export default function Home() {
       .from("playing_with_neon")
       .insert({ name: randomName, value: random });
     if (data) {
-      handleFetchClick();
+      performFetch();
     }
     if (error) {
       setError(error.message);
     }
+    setCodeSample(INSERT_CODE_SAMPLE);
   };
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)] flex p-8 items-center flex-col gap-y-4">
@@ -70,21 +84,31 @@ export default function Home() {
           Add Random Data
         </button>
       </div>
-      <div className="w-full">
-        {neonData && (
+      {codeSample ? (
+        <div className="w-full">
+          <h2 className="text-2xl font-medium ">Code Sample</h2>
+          <div className="bg-slate-800 text-green-400 font-mono p-4 rounded-lg shadow-md w-full max-h-[50vh] overflow-auto">
+            <pre className="overflow-auto">{codeSample}</pre>
+          </div>
+        </div>
+      ) : null}
+      {neonData ? (
+        <div className="w-full">
+          <h2 className="text-2xl font-medium ">Data</h2>
+
           <div className="bg-slate-800 text-green-400 font-mono p-4 rounded-lg shadow-md w-full max-h-[50vh] overflow-auto">
             <pre className="whitespace-pre-wrap break-words">
               {JSON.stringify(neonData, null, 2)}
             </pre>
           </div>
-        )}
-      </div>
+        </div>
+      ) : null}
       {error && (
         <div className="bg-red-100 p-4 rounded-lg shadow-md w-full text-red-700">
           <pre className="whitespace-pre-wrap break-words">{error}</pre>
         </div>
       )}
-      <footer className="absolute bottom-8 w-full">
+      <footer className="w-full justify-self-end mt-8">
         <div className="flex justify-center text-xl pb-3">BUILT WITH</div>
         <div className="flex gap-x-8 items-center w-full justify-center flex-wrap">
           <Image src="/vercel.svg" alt="Vercel Logo" width={32} height={32} />

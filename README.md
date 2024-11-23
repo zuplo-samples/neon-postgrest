@@ -6,7 +6,7 @@ Are you using/considering Neo - but wish you had the ability to interact with yo
 
 This is just a template so you can clone this repository directly and run it yourself.
 
-First, create a `.env` file and populate it with your Neon database URL. You can find this on the Quickstart tab on the Neon console, under Postgres. Once you have that, procede to installation.
+First, create a `.env` file and populate `DATABASE_URL` with your Neon database URL. You can find this on the Quickstart tab on the Neon console, under Postgres. Once you have that, procede to installation. `NEXT_PUBLIC_API_URL` will be set to `http://localhost:3000` if you're running locally.
 
 ```bash
 npm install
