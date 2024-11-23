@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/*.ts": {
+    "api/**/*.js": {
       "includeFiles": "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
     }
   }
