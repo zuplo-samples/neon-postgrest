@@ -32,7 +32,10 @@ async function initSubzero(sql: NeonQueryFunction<false, false>) {
 
 const handler = async (request: Request, method: Method) => {
   if (!touched.current) {
-    const path = join(process.cwd(), "subzero", "subzero_wasm_bg.wasm");
+    const path = join(
+      process.cwd(),
+      "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
+    );
     console.log("Reading", path);
     await fs.readFile(path);
     touched.current = true;
