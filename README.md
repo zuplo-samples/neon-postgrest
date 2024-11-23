@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Neon PostgREST API Demo
 
-## Getting Started
+Are you using/considering Neo - but wish you had the ability to interact with your database via API/SDK like Supabase? Look no further! This project shows you exactly how to recreate that API and developer experience.
 
-First, run the development server:
+## Installation
+
+This is just a template so you can clone this repository directly and run it yourself.
+
+First, create a `.env` file and populate it with your Neon database URL. You can find this on the Quickstart tab on the Neon console, under Postgres. Once you have that, procede to installation.
+
+```bash
+npm install
+```
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How It Works
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![img](./public/diagram.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+PostgREST requests are sent from the front-end to a catch-all route which invokes a serverless function. That function translates the request into a SQL query and executes it against your Neon database. The results are returned as a JSON.
 
-## Learn More
+NOTE: I wouldn't recommend actually performing SQL queries from your front-end - I bundled this together for demonstration purposes. You are essentially providing a door for malicious actors to interact with your database from your front-end. Instead, I would host the PostgREST API in a separate project (and protected behind a gateway), and call it from CRUD RESTful server functions on this project.
 
-To learn more about Next.js, take a look at the following resources:
+## Tools
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I used the following tools:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. NextJS Serverless Functions for easy Typescript setup + fast runtime (Cloudflare Workers will also work).
+2. Vercel to simplify deployment (you can use Cloudflare pages too).
+3. `@supabase/postgrest-js` to construct queries using a Supabase-like SDK. This sends PostgREST requests to your serverless function.
+4. `@subzerocloud/nodejs` to translate the PostgREST requests into Postgres queries.
+5. `@neondatabase/serverless` for querying your Neon database.
+6. (optional) [Zuplo](https://zuplo.com) API Gateway to proxy my serverless function. Good place to add caching, rate limiting, DDOS/bot protection, etc so this doesn't blow up in production.

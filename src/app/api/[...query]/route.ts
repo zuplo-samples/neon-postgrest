@@ -2,50 +2,42 @@ import Subzero, {
   SubzeroError,
   getIntrospectionQuery,
   Env as QueryEnv,
-  fmtContentRangeHeader /*fmtPostgreSqlEnv*/,
   Method,
 } from "@subzerocloud/nodejs";
-import { Pool } from "pg";
+import { neon, NeonQueryFunction } from "@neondatabase/serverless";
 
 const urlPrefix = "/api";
 const publicSchema = "public";
 const dbType = "postgresql";
-const connectionString = process.env.DATABASE_URL;
-const dbPool = new Pool({
-  connectionString,
-  max: 20,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
-});
-let subzero: Subzero;
-async function initSubzero() {
-  console.log("initSubzero");
 
+let subzero: Subzero;
+const role = "anonymous";
+async function initSubzero(sql: NeonQueryFunction<false, false>) {
   const { query, parameters } = getIntrospectionQuery(
-    dbType, // database type
+    dbType,
     publicSchema // the schema name that is exposed to the HTTP api (ex: public, api)
   );
-  const db = await dbPool.connect();
-  const result = await db.query(query, parameters);
-  db.release();
+  const data = await sql(query, parameters);
 
   // the result of the introspection query is a json string representation of the database schema/structure
   // this schema object is used to generate the queries and check the permissions
   // to make the function startup faster, one can cache the schema object
-  const schema = JSON.parse(result.rows[0].json_schema);
-  //console.log('schema', schema)
+  const schema = JSON.parse(data[0].json_schema);
   subzero = new Subzero(dbType, schema);
 }
 
 const handler = async (request: Request, method: Method) => {
-  const role = "anonymous";
-  const requestURL = new URL(request.url);
-  const offset = requestURL.searchParams.get("offset");
-  if (!["GET", "POST", "PUT", "DELETE", "PATCH"].includes(method))
+  if (!process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL is not set");
+  }
+  if (!["GET", "POST", "PUT", "DELETE", "PATCH"].includes(method)) {
     throw new SubzeroError(`Method ${method} not allowed`, 400);
+  }
+
+  const sql = neon(process.env.DATABASE_URL!);
   // initialize the subzero instance if it is not initialized yet
   if (!subzero) {
-    await initSubzero();
+    await initSubzero(sql);
   }
 
   const queryEnv: QueryEnv = [
@@ -62,62 +54,106 @@ const handler = async (request: Request, method: Method) => {
     queryEnv
   );
 
-  let result;
-  const db = await dbPool.connect();
+  let result: Record<string, unknown>[];
+
   try {
-    const txMode = method === "GET" ? "READ ONLY" : "READ WRITE";
-    await db.query(`BEGIN ISOLATION LEVEL READ COMMITTED ${txMode}`);
-    //await db.query(envQuery, envParameters)
-    result = (await db.query(query, parameters)).rows[0];
-    if (!result.constraints_satisfied) {
-      throw new SubzeroError(
-        "Permission denied",
-        403,
-        "check constraint of an insert/update permission has failed"
-      );
-    }
-    await db.query("COMMIT");
+    result = await sql(query, parameters);
   } catch (e) {
-    await db.query("ROLLBACK");
+    console.error(
+      `Error performing query ${query} with parameters ${parameters}`,
+      e
+    );
     throw e;
-  } finally {
-    db.release();
   }
 
-  const status = Number(result.status) || 200;
-  const pageTotal = Number(result.page_total) || 0;
-  const totalResultSet = Number(result.total_result_set) || undefined;
-
-  const offsetInt = Number(offset) || 0;
   const headers = {
-    "range-unit": "items",
-    "content-range": fmtContentRangeHeader(
-      offsetInt,
-      offsetInt + pageTotal - 1,
-      totalResultSet
-    ),
     "content-type": "application/json",
   };
 
   return new Response(JSON.stringify(result), {
-    status,
+    status: 200,
     headers,
   });
 };
 
 // export the handler functions for the different queries that can be performed
 export async function GET(request: Request) {
-  return handler(request, "GET");
+  try {
+    return await handler(request, "GET");
+  } catch (e) {
+    if (e instanceof SubzeroError) {
+      console.log("SubzeroError:", e);
+      return new Response(e.toJSONString(), {
+        status: e.status || 500,
+        headers: { "content-type": "application/json" },
+      });
+    } else {
+      console.log("Error:", e);
+      return new Response((e as Error).toString(), { status: 500 });
+    }
+  }
 }
 export async function POST(request: Request) {
-  return handler(request, "POST");
+  try {
+    return await handler(request, "POST");
+  } catch (e) {
+    if (e instanceof SubzeroError) {
+      console.log("SubzeroError:", e);
+      return new Response(e.toJSONString(), {
+        status: e.status || 500,
+        headers: { "content-type": "application/json" },
+      });
+    } else {
+      console.log("Error:", e);
+      return new Response((e as Error).toString(), { status: 500 });
+    }
+  }
 }
 export async function PUT(request: Request) {
-  return handler(request, "PUT");
+  try {
+    return await handler(request, "PUT");
+  } catch (e) {
+    if (e instanceof SubzeroError) {
+      console.log("SubzeroError:", e);
+      return new Response(e.toJSONString(), {
+        status: e.status || 500,
+        headers: { "content-type": "application/json" },
+      });
+    } else {
+      console.log("Error:", e);
+      return new Response((e as Error).toString(), { status: 500 });
+    }
+  }
 }
 export async function DELETE(request: Request) {
-  return handler(request, "DELETE");
+  try {
+    return await handler(request, "DELETE");
+  } catch (e) {
+    if (e instanceof SubzeroError) {
+      console.log("SubzeroError:", e);
+      return new Response(e.toJSONString(), {
+        status: e.status || 500,
+        headers: { "content-type": "application/json" },
+      });
+    } else {
+      console.log("Error:", e);
+      return new Response((e as Error).toString(), { status: 500 });
+    }
+  }
 }
 export async function PATCH(request: Request) {
-  return handler(request, "PATCH");
+  try {
+    return await handler(request, "PATCH");
+  } catch (e) {
+    if (e instanceof SubzeroError) {
+      console.log("SubzeroError:", e);
+      return new Response(e.toJSONString(), {
+        status: e.status || 500,
+        headers: { "content-type": "application/json" },
+      });
+    } else {
+      console.log("Error:", e);
+      return new Response((e as Error).toString(), { status: 500 });
+    }
+  }
 }
