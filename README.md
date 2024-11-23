@@ -1,6 +1,6 @@
 # Neon PostgREST API Demo
 
-Are you using/considering Neo - but wish you had the ability to interact with your database via API/SDK like Supabase? Look no further! This project shows you exactly how to recreate that API and developer experience.
+Are you using/considering Neo - but wish you had the ability to interact with your database via API/SDK like Supabase? Look no further! This project shows you exactly how to recreate that API and developer experience. [Try the Demo](https://neon-postgrest.zuplopreview.net/).
 
 ## Installation
 

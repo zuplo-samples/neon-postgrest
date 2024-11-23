@@ -157,3 +157,14 @@ export async function PATCH(request: Request) {
     }
   }
 }
+
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "access-control-allow-origin": "*",
+      "access-control-allow-methods": "GET, POST, PUT, DELETE, PATCH",
+      "access-control-allow-headers": "Content-Type, Prefer",
+    },
+  });
+}
