@@ -20,9 +20,12 @@ const SELECT_CODE_SAMPLE = `const { data, error } = await postgrest
       .from("playing_with_neon")
       .select("*")
       .order("id", { ascending: false });`;
-const INSERT_CODE_SAMPLE = `const { data, error } = await postgrest
+const getInsertCodeSample = (
+  name: string,
+  value: number
+) => `const { data, error } = await postgrest
       .from("playing_with_neon")
-      .insert({ name: randomName, value: random });`;
+      .insert({ name: ${name}, value: ${value} });`;
 
 export default function Home() {
   const [neonData, setNeonData] = useState<string>();
@@ -62,7 +65,7 @@ export default function Home() {
     if (error) {
       setError(error.message);
     }
-    setCodeSample(INSERT_CODE_SAMPLE);
+    setCodeSample(getInsertCodeSample(randomName, random));
   };
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)] flex p-8 items-center flex-col gap-y-4">
