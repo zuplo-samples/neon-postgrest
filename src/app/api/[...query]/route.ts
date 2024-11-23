@@ -34,7 +34,7 @@ const handler = async (request: Request, method: Method) => {
   if (!touched.current) {
     const path = join(process.cwd(), "subzero", "subzero_wasm_bg.wasm");
     console.log("Reading", path);
-    await fs.readdir(path);
+    await fs.readFile(path);
     touched.current = true;
   }
   if (!process.env.DATABASE_URL) {
