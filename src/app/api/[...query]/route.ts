@@ -172,6 +172,15 @@ export async function PATCH(request: Request) {
 }
 
 export async function OPTIONS() {
+  if (!touched.current) {
+    const path = join(
+      process.cwd(),
+      "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
+    );
+    console.log("Reading", path);
+    await fs.readFile(path);
+    touched.current = true;
+  }
   return new Response(null, {
     status: 204,
     headers: {
