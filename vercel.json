@@ -1,16 +1,10 @@
 {
   "functions": {
     "app/api/**/*.js": {
-      "includeFiles": [
-        "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm",
-        "./subzero/subzero_wasm_bg.wasm"
-      ]
+      "includeFiles": "./subzero/subzero_wasm_bg.wasm"
     },
     "app/api/*.js": {
-      "includeFiles": [
-        "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm",
-        "./subzero/subzero_wasm_bg.wasm"
-      ]
+      "includeFiles": "./subzero/subzero_wasm_bg.wasm"
     }
   }
 }
