@@ -1,8 +1,5 @@
 {
   "functions": {
-    "api/**.js": {
-      "includeFiles": "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
-    },
     "api/*.js": {
       "includeFiles": "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
     }
