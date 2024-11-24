@@ -10,47 +10,47 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api//\\[\\[\\.\\.\\.query\\]\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api//\\[\\[\\.\\.\\.query\\]\\]/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/\\[\\.\\.\\.query\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/\\[\\.\\.\\.query\\]/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/\\[query\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/\\[query\\]/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/**": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/**/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/playing_with_neon/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/api/playing_with_neon": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/app/api//\\[\\[\\.\\.\\.query\\]\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
@@ -66,23 +66,23 @@ const nextConfig: NextConfig = {
     ],
     "/app/api/\\[query\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/app/api/\\[query\\]/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/app/api/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/app/api/**": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/app/api/**/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/app/api/playing_with_neon": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
@@ -104,26 +104,26 @@ const nextConfig: NextConfig = {
     ],
     "/src/app/api/\\[query\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/src/app/api/\\[query\\]/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
     "/src/app/api/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/src/app/api/**": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/src/app/api/**/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
     "/src/app/api/playing_with_neon/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
-      "./node_modules/styled-jsx/**/*",
+      "./node_modules/**/*",
     ],
   },
 };
