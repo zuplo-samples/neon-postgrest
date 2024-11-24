@@ -5,13 +5,19 @@ const nextConfig: NextConfig = {
   output: "standalone",
   outputFileTracingIncludes: {
     "/api//\\[\\[\\.\\.\\.query\\]\\]": [
-      "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm",
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
-    "/api/\\[\\.\\.\\.query\\]": [
-      "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm",
+    "/api//\\[\\[\\.\\.\\.query\\]\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
-    "/api/*": ["./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"],
-    "/api/**": ["./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"],
+    "/api/\\[\\.\\.\\.query\\]": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/\\[\\.\\.\\.query\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/playing_with_neon/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
   },
 };
 
