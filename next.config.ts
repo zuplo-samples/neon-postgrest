@@ -3,38 +3,68 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   outputFileTracingIncludes: {
-    "/api//\\[\\[\\.\\.\\.query\\]\\]": ["./node_modules/**/*.wasm"],
-    "/api//\\[\\[\\.\\.\\.query\\]\\]/*": ["./node_modules/**/*.wasm"],
-    "/api/\\[\\.\\.\\.query\\]": ["./node_modules/**/*.wasm"],
-    "/api/\\[\\.\\.\\.query\\]/*": ["./node_modules/**/*.wasm"],
-    "/api/\\[query\\]": ["./node_modules/**/*.wasm"],
-    "/api/\\[query\\]/*": ["./node_modules/**/*.wasm"],
-    "/api/*": ["./node_modules/**/*.wasm"],
-    "/api/**": ["./node_modules/**/*.wasm"],
-    "/api/**/*": ["./node_modules/**/*.wasm"],
-    "/api/playing_with_neon/*": ["./node_modules/**/*.wasm"],
-    "/api/playing_with_neon": ["./node_modules/**/*.wasm"],
-    "/app/api//\\[\\[\\.\\.\\.query\\]\\]": ["./node_modules/**/*.wasm"],
-    "/app/api//\\[\\[\\.\\.\\.query\\]\\]/*": ["./node_modules/**/*.wasm"],
-    "/app/api/\\[\\.\\.\\.query\\]": ["./node_modules/**/*.wasm"],
-    "/app/api/\\[\\.\\.\\.query\\]/*": ["./node_modules/**/*.wasm"],
-    "/app/api/\\[query\\]": ["./node_modules/**/*.wasm"],
-    "/app/api/\\[query\\]/*": ["./node_modules/**/*.wasm"],
-    "/app/api/*": ["./node_modules/**/*.wasm"],
-    "/app/api/**": ["./node_modules/**/*.wasm"],
-    "/app/api/**/*": ["./node_modules/**/*.wasm"],
-    "/app/api/playing_with_neon": ["./node_modules/**/*.wasm"],
-    "/app/api/playing_with_neon/*": ["./node_modules/**/*.wasm"],
-    "/src/app/api//\\[\\[\\.\\.\\.query\\]\\]": ["./node_modules/**/*.wasm"],
-    "/src/app/api//\\[\\[\\.\\.\\.query\\]\\]/*": ["./node_modules/**/*.wasm"],
-    "/src/app/api/\\[\\.\\.\\.query\\]": ["./node_modules/**/*.wasm"],
-    "/src/app/api/\\[\\.\\.\\.query\\]/*": ["./node_modules/**/*.wasm"],
-    "/src/app/api/\\[query\\]": ["./node_modules/**/*.wasm"],
-    "/src/app/api/\\[query\\]/*": ["./node_modules/**/*.wasm"],
-    "/src/app/api/*": ["./node_modules/**/*.wasm"],
-    "/src/app/api/**": ["./node_modules/**/*.wasm"],
-    "/src/app/api/**/*": ["./node_modules/**/*.wasm"],
-    "/src/app/api/playing_with_neon/*": ["./node_modules/**/*.wasm"],
+    "/api//\\[\\[\\.\\.\\.query\\]\\]": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/api//\\[\\[\\.\\.\\.query\\]\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/api/\\[\\.\\.\\.query\\]": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/\\[\\.\\.\\.query\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/api/\\[query\\]": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/\\[query\\]/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/playing_with_neon/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/playing_with_neon": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api//\\[\\[\\.\\.\\.query\\]\\]": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api//\\[\\[\\.\\.\\.query\\]\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api/\\[\\.\\.\\.query\\]": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api/\\[\\.\\.\\.query\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api/\\[query\\]": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/\\[query\\]/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/playing_with_neon": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api/playing_with_neon/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/src/app/api//\\[\\[\\.\\.\\.query\\]\\]": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/src/app/api//\\[\\[\\.\\.\\.query\\]\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/src/app/api/\\[\\.\\.\\.query\\]": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/src/app/api/\\[\\.\\.\\.query\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/src/app/api/\\[query\\]": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/src/app/api/\\[query\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/src/app/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/src/app/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/src/app/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/src/app/api/playing_with_neon/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
   },
 };
 
