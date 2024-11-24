@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/ && cp ./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm .next/standalone/.next/static/chunks && cp ./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm .next/standalone/.next/server/chunks",
+    "build": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/ && cp -r ./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm .next/standalone/.next/static/chunks && cp -r ./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm .next/standalone/.next/server/chunks",
     "start": "node .next/standalone/server.js",
     "standalone-start": "node .next/standalone/server.js",
     "lint": "next lint"

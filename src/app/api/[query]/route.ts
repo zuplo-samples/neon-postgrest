@@ -11,6 +11,7 @@ import { join } from "path";
 const urlPrefix = "/api";
 const publicSchema = "public";
 const dbType = "postgresql";
+export const dynamic = "force-dynamic"; // static by default, unless reading the request
 
 let subzero: Subzero;
 const role = "anonymous";
