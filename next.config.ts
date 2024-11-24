@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: "standalone",
+  webpack: (config) => {
+    config.experiments.asyncWebAssembly = true;
+    return config;
+  },
   outputFileTracingIncludes: {
     "/api//\\[\\[\\.\\.\\.query\\]\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
