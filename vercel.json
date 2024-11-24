@@ -1,16 +1,16 @@
 {
   "functions": {
     "app/api/**/*.js": {
-      "includeFiles": "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
+      "includeFiles": "./node_modules/**/*.wasm"
     },
     "app/api/*.js": {
-      "includeFiles": "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
+      "includeFiles": "./node_modules/**/*.wasm"
     },
     "app/api/[query]/*.js": {
-      "includeFiles": "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
+      "includeFiles": "./node_modules/**/*.wasm"
     },
     "app/api/[query]": {
-      "includeFiles": "./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
+      "includeFiles": "./node_modules/**/*.wasm"
     }
   }
 }
