@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
+//   output: "standalone",
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone",
   webpack: (config) => {
     config.experiments.asyncWebAssembly = true;
     return config;

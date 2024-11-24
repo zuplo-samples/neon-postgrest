@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/ && cp -r ./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm .next/standalone/.next/static/chunks && cp -r ./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm .next/standalone/.next/server/chunks && cp -r node_modules/styled-jsx .next/standalone/node_modules/ && cp -r node_modules/next .next/standalone/node_modules/",
-    "start": "node .next/standalone/server.js",
+    "build": "next build",
+    "start": "next start",
     "standalone-start": "node .next/standalone/server.js",
     "lint": "next lint"
   },
