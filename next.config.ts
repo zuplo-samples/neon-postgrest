@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  outputFileTracingRoot: "./src",
   outputFileTracingIncludes: {
     "/api//\\[\\[\\.\\.\\.query\\]\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
