@@ -33,7 +33,7 @@ I used the following tools:
 3. `@supabase/postgrest-js` to construct queries using a Supabase-like SDK. This sends PostgREST requests to your serverless function.
 4. `@subzerocloud/nodejs` to translate the PostgREST requests into Postgres queries.
 5. `@neondatabase/serverless` for querying your Neon database.
-6. (optional) [Zuplo](https://zuplo.com) API Gateway to proxy my serverless function. Good place to add caching, rate limiting, DDOS/bot protection, etc so this doesn't blow up in production. You can find the gateway code [here](https://github.com/zuplo-samples/neon-postgrest-proxy);
+6. (optional) [Zuplo](https://zuplo.com) API Gateway to proxy my serverless function. Good place to add caching, rate limiting, DDOS/bot protection, etc so this doesn't blow up in production. You can find the gateway code [here](https://github.com/zuplo-samples/neon-postgrest-proxy).
 
 ## Why Not Use the App Directory?
 
