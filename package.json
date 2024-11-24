@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && cp ./node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm .next/server/chunks",
     "start": "next start",
     "lint": "next lint"
   },
