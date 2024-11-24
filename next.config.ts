@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
     "/api/\\[\\.\\.\\.query\\]/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
+    "/api/\\[query\\]": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/\\[query\\]/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
@@ -30,6 +32,8 @@ const nextConfig: NextConfig = {
     "/app/api/\\[\\.\\.\\.query\\]/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
+    "/app/api/\\[query\\]": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/\\[query\\]/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/app/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/app/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/app/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
@@ -49,6 +53,10 @@ const nextConfig: NextConfig = {
       "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
     "/src/app/api/\\[\\.\\.\\.query\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/src/app/api/\\[query\\]": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/src/app/api/\\[query\\]/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
     "/src/app/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
