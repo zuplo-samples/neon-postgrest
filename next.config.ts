@@ -18,6 +18,24 @@ const nextConfig: NextConfig = {
     "/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/api/playing_with_neon/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api//\\[\\[\\.\\.\\.query\\]\\]": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api//\\[\\[\\.\\.\\.query\\]\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api/\\[\\.\\.\\.query\\]": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api/\\[\\.\\.\\.query\\]/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
+    "/app/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/playing_with_neon/*": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
   },
 };
 
