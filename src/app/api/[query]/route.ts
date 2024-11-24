@@ -22,6 +22,8 @@ const path = join(
   "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
 );
 fs.readFileSync(path);
+const pathStyle = join(process.cwd(), "node_modules/styled-jsx");
+fs.readdirSync(pathStyle);
 
 async function initSubzero(sql: NeonQueryFunction<false, false>) {
   const { query, parameters } = getIntrospectionQuery(
