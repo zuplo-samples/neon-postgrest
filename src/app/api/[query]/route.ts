@@ -5,7 +5,7 @@ import Subzero, {
   Method,
 } from "@subzerocloud/nodejs";
 import { neon, NeonQueryFunction } from "@neondatabase/serverless";
-import * as fs from "fs/promises";
+import fs from "fs";
 import { join } from "path";
 
 const urlPrefix = "/api";
@@ -15,6 +15,12 @@ const dbType = "postgresql";
 let subzero: Subzero;
 const role = "anonymous";
 const touched = { current: false };
+
+const path = join(
+  process.cwd(),
+  "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
+);
+fs.readdirSync(path);
 
 async function initSubzero(sql: NeonQueryFunction<false, false>) {
   const { query, parameters } = getIntrospectionQuery(
@@ -32,12 +38,8 @@ async function initSubzero(sql: NeonQueryFunction<false, false>) {
 
 const handler = async (request: Request, method: Method) => {
   if (!touched.current) {
-    const path = join(
-      process.cwd(),
-      "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
-    );
     console.log("Reading", path);
-    await fs.readFile(path);
+
     touched.current = true;
   }
   if (!process.env.DATABASE_URL) {
@@ -178,7 +180,7 @@ export async function OPTIONS() {
       "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
     );
     console.log("Reading", path);
-    await fs.readFile(path);
+    fs.readdirSync(path);
     touched.current = true;
   }
   return new Response(null, {
