@@ -28,6 +28,9 @@ async function initSubzero(sql: NeonQueryFunction<false, false>) {
   subzero = new Subzero(dbType, schema);
 }
 
+// Similar implementation to Subzero's handler: https://github.com/subzerocloud/showcase/blob/main/vercel-postgresql-neon/pages/api/%5B...path%5D.ts
+// I swap out the library used for a better serverless experience, and less
+// boilerplate
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse

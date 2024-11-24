@@ -43,9 +43,11 @@ export default function Home() {
       .order("id", { ascending: false });
     if (data) {
       setNeonData(JSON.parse((data as unknown as PostgrestResponse[])[0].body));
+      setError(undefined);
     }
     if (error) {
-      setError(error.message);
+      setError(JSON.stringify(error, null, 2));
+      setNeonData(undefined);
     }
   };
   const handleInsertClick = async () => {
@@ -63,7 +65,7 @@ export default function Home() {
       performFetch();
     }
     if (error) {
-      setError(error.message);
+      setError(JSON.stringify(error, null, 2));
     }
     setCodeSample(getInsertCodeSample(randomName, random));
   };

@@ -1,3 +1,9 @@
+// Due to various issues with Vercel bundling the wasm file when using the app
+// directory (ex. https://github.com/orgs/vercel/discussions/1278), I was
+// unfortunately not able to get this working. I even tried a standalone
+// but hit https://github.com/vercel/next.js/issues/50072
+// The code provided in next.config.ts should work once those issues are fixed.
+
 import Subzero, {
   SubzeroError,
   getIntrospectionQuery,
@@ -5,8 +11,6 @@ import Subzero, {
   Method,
 } from "@subzerocloud/nodejs";
 import { neon, NeonQueryFunction } from "@neondatabase/serverless";
-import fs from "fs";
-import { join } from "path";
 
 const urlPrefix = "/api";
 const publicSchema = "public";
@@ -15,15 +19,6 @@ export const dynamic = "force-dynamic"; // static by default, unless reading the
 
 let subzero: Subzero;
 const role = "anonymous";
-const touched = { current: false };
-
-const path = join(
-  process.cwd(),
-  "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
-);
-fs.readFileSync(path);
-const pathStyle = join(process.cwd(), "node_modules/styled-jsx");
-fs.readdirSync(pathStyle);
 
 async function initSubzero(sql: NeonQueryFunction<false, false>) {
   const { query, parameters } = getIntrospectionQuery(
@@ -40,11 +35,6 @@ async function initSubzero(sql: NeonQueryFunction<false, false>) {
 }
 
 const handler = async (request: Request, method: Method) => {
-  if (!touched.current) {
-    console.log("Reading", path);
-
-    touched.current = true;
-  }
   if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL is not set");
   }
@@ -177,15 +167,6 @@ export async function PATCH(request: Request) {
 }
 
 export async function OPTIONS() {
-  if (!touched.current) {
-    const path = join(
-      process.cwd(),
-      "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
-    );
-    console.log("Reading", path);
-    fs.readdirSync(path);
-    touched.current = true;
-  }
   return new Response(null, {
     status: 204,
     headers: {

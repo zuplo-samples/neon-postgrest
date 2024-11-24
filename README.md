@@ -34,3 +34,7 @@ I used the following tools:
 4. `@subzerocloud/nodejs` to translate the PostgREST requests into Postgres queries.
 5. `@neondatabase/serverless` for querying your Neon database.
 6. (optional) [Zuplo](https://zuplo.com) API Gateway to proxy my serverless function. Good place to add caching, rate limiting, DDOS/bot protection, etc so this doesn't blow up in production.
+
+## Why Not Use the App Directory?
+
+I tried for several days to get the `app` directory working for the serverless function but Vercel has wayyy too many unaddressed bugs with bundling wasm (which Subzero needs) and standalone builds for me to keep banging my head on it.
