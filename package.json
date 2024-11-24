@@ -16,7 +16,8 @@
     "next": "15.0.3",
     "npm": "^10.9.1",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "styled-jsx": "^5.1.6"
   },
   "devDependencies": {
     "@types/node": "^20",
