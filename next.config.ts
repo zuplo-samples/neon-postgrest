@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  outputFileTracingRoot: "./src",
   outputFileTracingIncludes: {
     "/api//\\[\\[\\.\\.\\.query\\]\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
@@ -17,6 +18,7 @@ const nextConfig: NextConfig = {
     "/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/api/playing_with_neon/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/api/playing_with_neon": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/app/api//\\[\\[\\.\\.\\.query\\]\\]": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
@@ -32,6 +34,9 @@ const nextConfig: NextConfig = {
     "/app/api/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/app/api/**": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
     "/app/api/**/*": ["./node_modules/@subzerocloud/nodejs/*.wasm"],
+    "/app/api/playing_with_neon": [
+      "./node_modules/@subzerocloud/nodejs/*.wasm",
+    ],
     "/app/api/playing_with_neon/*": [
       "./node_modules/@subzerocloud/nodejs/*.wasm",
     ],
