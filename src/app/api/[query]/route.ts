@@ -20,7 +20,7 @@ const path = join(
   process.cwd(),
   "node_modules/@subzerocloud/nodejs/subzero_wasm_bg.wasm"
 );
-fs.readdirSync(path);
+fs.readFileSync(path);
 
 async function initSubzero(sql: NeonQueryFunction<false, false>) {
   const { query, parameters } = getIntrospectionQuery(
