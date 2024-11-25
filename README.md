@@ -1,6 +1,6 @@
 # Neon PostgREST API Demo
 
-Are you using/considering Neon - but wish you had the ability to interact with your database via API/SDK like Supabase? Look no further! This project shows you exactly how to recreate that API and developer experience. [Try the Demo](https://neon-postgrest.zuplopreview.net/).
+Are you using/considering [Neon](https://neon.tech) (or your own hosted Postgres) - but wish you had the ability to interact with your database via API/SDK like Supabase? Look no further! This project shows you exactly how to recreate the Supabase API and developer experience. [Try the Demo](https://neon-postgrest.zuplopreview.net/).
 
 ## Installation
 
@@ -30,10 +30,10 @@ I used the following tools:
 
 1. NextJS Serverless Functions for easy Typescript setup + fast runtime (Cloudflare Workers will also work).
 2. Vercel to simplify deployment (you can use Cloudflare pages too).
-3. `@supabase/postgrest-js` to construct queries using a Supabase-like SDK. This sends PostgREST requests to your serverless function.
-4. `@subzerocloud/nodejs` to translate the PostgREST requests into Postgres queries.
-5. `@neondatabase/serverless` for querying your Neon database.
-6. (optional) [Zuplo](https://zuplo.com) API Gateway to proxy my serverless function. Good place to add caching, rate limiting, DDOS/bot protection, etc so this doesn't blow up in production. You can find the gateway code [here](https://github.com/zuplo-samples/neon-postgrest-proxy).
+3. [`@supabase/postgrest-js`](https://www.npmjs.com/package/@supabase/postgrest-js) to construct queries using a Supabase-like SDK. This sends PostgREST requests to your serverless function.
+4. [`@subzerocloud/nodejs`](https://www.npmjs.com/package/@subzerocloud/nodejs) to translate the PostgREST requests into Postgres queries.
+5. [`@neondatabase/serverless`](https://www.npmjs.com/package/@neondatabase/serverless) for querying your Neon database.
+6. (optional) [Zuplo API Gateway](https://zuplo.com) to proxy your serverless function. Good place to add caching, rate limiting, DDOS/bot protection, etc so this doesn't blow up in production. You can find the gateway code [here](https://github.com/zuplo-samples/neon-postgrest-proxy).
 
 ## Why Not Use the App Directory?
 
