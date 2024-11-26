@@ -74,7 +74,17 @@ export default function Home() {
       <header className="text-4xl font-medium text-green-400">
         Neon PostgREST API Demo
       </header>
-      <div>A Supabase-like API DevX with Neon and PostgREST.</div>
+      <div>
+        A Supabase-like API DevX with Neon and PostgREST.{" "}
+        <a
+          className="text-green-400 hover:text-green-500"
+          target="_blank"
+          href="https://github.com/zuplo-samples/neon-postgrest"
+        >
+          Source
+        </a>
+      </div>
+
       <div className="flex gap-x-4">
         <button
           onClick={handleFetchClick}
