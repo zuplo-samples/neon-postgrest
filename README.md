@@ -1,6 +1,6 @@
 # Neon PostgREST API Demo
 
-Are you using/considering [Neon](https://neon.tech) (or your own hosted Postgres) - but wish you had the ability to interact with your database via API/SDK like Supabase? Look no further! This project shows you exactly how to recreate the Supabase API and developer experience. [Try the Demo](https://neon-postgrest.zuplopreview.net/).
+Are you using/considering [Neon](https://neon.tech) (or your own hosted Postgres) - but wish you had the ability to interact with your database via API/SDK like Supabase? Look no further! This project shows you exactly how to recreate the Supabase API and developer experience. [Try the Demo](https://neon-postgrest.zuplopreview.net/). You can also [read the walkthrough](https://zuplo.com/blog/2024/11/25/neon-postgrest-rest-api) to get a better sense of how this works.
 
 ## Installation
 
