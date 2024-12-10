@@ -38,3 +38,5 @@ I used the following tools:
 ## Why Not Use the App Directory?
 
 I tried for several days to get the `app` directory working for the serverless function but Vercel has wayyy too many unaddressed bugs with bundling wasm (which Subzero needs) and standalone builds for me to keep banging my head on it. I included a sample file for what your code would look like if using the app directory.
+
+Created with ❤️ by [Zuplo](https://zuplo.com).
